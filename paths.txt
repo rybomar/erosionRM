@@ -1,0 +1,5 @@
+"C:\TMP\erosion\training_2017_clip.shp"
+"C:\TMP\erosion\dsm_open_pos50_ndsm.tif"
+"C:\TMP\erosion\gradient_ndsm_c001_r03.tif"
+"C:\TMP\erosion\std_k30_aoi.tif"
+"C:\TMP\erosion\videbaek_1_dsm_c001_aoi_kmax_ks05.tif"
