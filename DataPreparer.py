@@ -1,5 +1,5 @@
 import numpy as np
-
+import joblib
 from RasterReader import RasterReader
 from VectorReader import VectorReader
 
@@ -19,6 +19,11 @@ class DataPreparer:
         paths = [x.strip().replace('"', '') for x in content]
         self.tifsPaths = paths[1:]
         self.trainingShp = paths[0]
+        testTifPaths = self.getTiffs()
+        rr = RasterReader(testTifPaths[0])
+        self.rasterWidth = rr.X
+        self.rasterHigh = rr.Y
+        self.geotransform = rr.geotransform
 
     def getTiffs(self):
         return self.tifsPaths
@@ -33,6 +38,14 @@ class DataPreparer:
         # trainingShp = "C:/TMP/erosion/training_2017_clip.shp"
         return self.trainingShp
 
+    def getModel(self):
+        model = None
+        if self.trainingShp[-3:] == 'bin':
+            model = joblib.load(self.trainingShp)
+            self.numberOfClasses = len(np.unique(model.classes_))
+        return model
+
+
     def prepareTrainingData(self):
         testTifPaths = self.getTiffs()
         trainingShp = self.getTestShp()
@@ -43,11 +56,6 @@ class DataPreparer:
         objectsCount = len(classNumbers)
         featuresCount = len(testTifPaths)
         allValues = np.zeros((objectsCount, featuresCount))
-
-        rr = RasterReader(testTifPaths[0])
-        self.rasterWidth = rr.X
-        self.rasterHigh = rr.Y
-        self.geotransform = rr.geotransform
 
         t = 0
         ids = np.arange(objectsCount)

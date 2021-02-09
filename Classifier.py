@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+import joblib
 
 
 class Classifier:
@@ -13,14 +14,24 @@ class Classifier:
     importanes = []
     bestModel = []
 
-    def __init__(self, trainingData):
+    def __init__(self):
+        self.trainingData = None
+        self.ids = None
+        self.classNumbers = None
+        self.featuresValues = None
+
+    def loadTraining(self, trainingData):
         self.trainingData = trainingData
         self.ids = trainingData['ids']
         self.classNumbers = trainingData['classNums']
         self.featuresValues = trainingData['featuresValues']
 
-    def saveImportances(self):
-        print('Saving importances')
+    def loadModel(self, model):
+        self.bestModel = model
+        self.classNumbers = self.bestModel.classes_
+
+    def getNumberOfClasses(self):
+        return len(np.unique(self.classNumbers))
 
     def trainRandomForest(self):
         maxDepth = 10
@@ -37,7 +48,7 @@ class Classifier:
         self.bestModel.fit(X_trainStart, y_trainStart)
         self.importances = self.bestModel.feature_importances_
         self.saveImportances()
-        classes = self.bestModel.classes_
+        self.saveModel()
 
     def classifyByModel(self, featuresValues):
         y_pred = self.bestModel.predict(featuresValues)
@@ -50,3 +61,7 @@ class Classifier:
             s = str(imp)
             file.write(s)
         file.close()
+
+    def saveModel(self):
+        modelFilePath = 'maxModel.bin'
+        joblib.dump(self.bestModel, modelFilePath)

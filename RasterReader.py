@@ -18,7 +18,6 @@ class RasterReader(object):
         self.openFile()
 
     def openFile(self):
-        print(self.filePath)
         self.dataset = gdal.Open(self.filePath)
         self.band = self.dataset.GetRasterBand(1)
         self.geotransform = self.dataset.GetGeoTransform()

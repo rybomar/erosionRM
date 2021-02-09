@@ -8,10 +8,16 @@ import DataWriter
 
 def __main__():
     preparer = DataPreparer.DataPreparer('paths.txt')
-    trainingData = preparer.prepareTrainingData()
+    model = preparer.getModel()
+    cl = Classifier.Classifier()
+    if model == None:
+        trainingData = preparer.prepareTrainingData()
+        cl.loadTraining(trainingData)
+        cl.trainRandomForest()
+    else:
+        cl = Classifier.Classifier()
+        cl.loadModel(model)
     numberOfClasses = preparer.getNumberOfClasses()
-    cl = Classifier.Classifier(trainingData)
-    cl.trainRandomForest()
     resultClassImg = np.zeros((preparer.rasterHigh, preparer.rasterWidth), dtype=np.uint8)
     resultProbaImg = np.zeros((preparer.rasterHigh, preparer.rasterWidth, numberOfClasses), dtype=np.uint8)
     previousProc = -1
@@ -24,9 +30,6 @@ def __main__():
         if int(proc) > previousProc:
             previousProc = int(proc)
             print(str(proc) + '%')
-            # if proc >= 10:
-            #     classWriter.closeFile()
-            #     return
     classWriter = DataWriter.DataWriter('erosionClassification.tif', preparer.rasterWidth, preparer.rasterHigh, preparer.geotransform)
     classWriter.writeData(resultClassImg)
     classWriter.closeFile()
