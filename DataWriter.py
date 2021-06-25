@@ -3,14 +3,10 @@ import numpy as np
 
 
 class DataWriter:
-    filePath = ''
-    dataset = None
-    X = 0
-    Y = 0
-    geotransform = None
 
     def __init__(self, filePath, X, Y, geotransform):
         self.filePath = filePath
+        self.dataset = None
         self.X = X
         self.Y = Y
         self.geotransform = geotransform

@@ -4,16 +4,13 @@ import gdal
 import numpy as np
 
 class RasterReader(object):
-    filePath = ''
-    band = 0
-    dataset = None
-    X = 0
-    Y = 0
-    geotransform = None
 
     def __init__(self, filePath):
         self.filePath = filePath
+        self.dataset = None
         self.band = None
+        self.X = 0
+        self.Y = 0
         self.geotransform = None
         self.openFile()
 

@@ -1,3 +1,3 @@
-"H:\inneProjekty\erosionRM\maxModel.bin"
-"N:\SPAM\radoslaw_malinowski\erosion\gradient_ndsm_c001_r03.tif"
-"N:\SPAM\radoslaw_malinowski\erosion\dsm_open_pos50_ndsm.tif"
+"N:\SPAM\radoslaw_malinowski\training_500.shp"
+"N:\SPAM\radoslaw_malinowski\Luet_uav_240713_erased_idw_aoi_kmax_ks05_aoi.tif"
+"N:\SPAM\radoslaw_malinowski\rank_r01_c05_min_points_idw_aoi.tif"

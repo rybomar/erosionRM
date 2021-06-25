@@ -5,12 +5,6 @@ from VectorReader import VectorReader
 
 
 class DataPreparer:
-    rasterWidth = 0
-    rasterHigh = 0
-    geotransform = None
-    tifsPaths = []
-    trainingShp = ''
-    numberOfClasses = 0
 
     def __init__(self, fileWithRasterPaths):
         with open(fileWithRasterPaths) as f:
@@ -24,6 +18,7 @@ class DataPreparer:
         self.rasterWidth = rr.X
         self.rasterHigh = rr.Y
         self.geotransform = rr.geotransform
+        self.numberOfClasses = 0
 
     def getTiffs(self):
         return self.tifsPaths

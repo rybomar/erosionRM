@@ -7,18 +7,14 @@ import joblib
 
 
 class Classifier:
-    trainingData = None
-    ids = []
-    classNums = []
-    featuresValues = []
-    importanes = []
-    bestModel = []
 
     def __init__(self):
         self.trainingData = None
         self.ids = None
         self.classNumbers = None
         self.featuresValues = None
+        self.importanes = []
+        self.bestModel = []
 
     def loadTraining(self, trainingData):
         self.trainingData = trainingData

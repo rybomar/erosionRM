@@ -3,7 +3,6 @@ import numpy as np
 
 
 class VectorReader(object):
-    filePath = ''
 
     def __init__(self, filePath):
         self.filePath = filePath
