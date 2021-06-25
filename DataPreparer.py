@@ -22,15 +22,8 @@ class DataPreparer:
 
     def getTiffs(self):
         return self.tifsPaths
-        # testTifPaths = []
-        # testTifPaths.append("C:/TMP/erosion/dsm_open_pos50_ndsm.tif")
-        # testTifPaths.append("C:/TMP/erosion/gradient_ndsm_c001_r03.tif")
-        # testTifPaths.append("C:/TMP/erosion/std_k30_aoi.tif")
-        # testTifPaths.append("C:/TMP/erosion/videbaek_1_dsm_c001_aoi_kmax_ks05.tif")
-        # return testTifPaths
 
     def getTestShp(self):
-        # trainingShp = "C:/TMP/erosion/training_2017_clip.shp"
         return self.trainingShp
 
     def getModel(self):

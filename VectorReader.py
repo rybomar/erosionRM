@@ -24,7 +24,6 @@ class VectorReader(object):
             for feature in layer:
                 geom = feature.GetGeometryRef()
                 field = feature.GetField(columnName)
-                # np.append(geometries, [geom], axis=0)
                 geometries[counter, 0] = geom.GetX()
                 geometries[counter, 1] = geom.GetY()
                 fields.append(field)

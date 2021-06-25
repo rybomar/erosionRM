@@ -1,5 +1,3 @@
-import VectorReader
-import RasterReader
 import numpy as np
 import DataPreparer
 import Classifier
