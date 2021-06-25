@@ -12,12 +12,14 @@ class RasterReader(object):
         self.X = 0
         self.Y = 0
         self.geotransform = None
+        self.projection = ''
         self.openFile()
 
     def openFile(self):
         self.dataset = gdal.Open(self.filePath)
         self.band = self.dataset.GetRasterBand(1)
         self.geotransform = self.dataset.GetGeoTransform()
+        self.projection = self.dataset.GetProjection()
         self.X = self.dataset.RasterXSize
         self.Y = self.dataset.RasterYSize
 

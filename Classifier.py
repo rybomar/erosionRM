@@ -31,7 +31,7 @@ class Classifier:
 
     def trainRandomForest(self):
         maxDepth = 10
-        nEstimators = 3
+        nEstimators = 200
         foldCut = 0.25
         X_trainStart = self.featuresValues
         y_trainStart = self.classNumbers

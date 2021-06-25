@@ -18,6 +18,7 @@ class DataPreparer:
         self.rasterWidth = rr.X
         self.rasterHigh = rr.Y
         self.geotransform = rr.geotransform
+        self.projeciton = rr.projection
         self.numberOfClasses = 0
 
     def getTiffs(self):

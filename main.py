@@ -28,10 +28,10 @@ def __main__():
         if int(proc) > previousProc:
             previousProc = int(proc)
             print(str(proc) + '%')
-    classWriter = DataWriter.DataWriter('erosionClassification.tif', preparer.rasterWidth, preparer.rasterHigh, preparer.geotransform)
+    classWriter = DataWriter.DataWriter('erosionClassification.tif', preparer.rasterWidth, preparer.rasterHigh, preparer.geotransform, preparer.projeciton)
     classWriter.writeData(resultClassImg)
     classWriter.closeFile()
-    probWriter = DataWriter.DataWriter('erosionProb.tif', preparer.rasterWidth, preparer.rasterHigh, preparer.geotransform)
+    probWriter = DataWriter.DataWriter('erosionProb.tif', preparer.rasterWidth, preparer.rasterHigh, preparer.geotransform, preparer.projeciton)
     maxprob = np.amax(resultProbaImg, axis=2)
     probWriter.writeData((255 * maxprob.astype(np.uint8)))
     probWriter.closeFile()
